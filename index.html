@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desktop Gold — All-in-One Mail, Browsing & Entertainment</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #0066cc;
+            --primary-hover: #004d99;
+            --dark-navy: #101827;
+            --light-bg: #f3f6f9;
+            --card-bg: #ffffff;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --border-color: #e5e7eb;
+            --gold-accent: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--dark-navy);
+            color: #9ca3af;
+            padding: 0.4rem 8%;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #d1d5db;
+            text-decoration: none;
+            margin-left: 1rem;
+        }
+
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+
+        /* Navigation */
+        nav {
+            background: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo .gold {
+            color: var(--gold-accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 0.65rem 1.4rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0b1f3a 0%, #1e3a8a 100%);
+            color: #ffffff;
+            padding: 5rem 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-left {
+            flex: 1.2;
+            max-width: 600px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-left h1 {
+            font-size: 2.7rem;
+            line-height: 1.2;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-left p {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: #111827;
+            padding: 0.75rem 1.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.2s;
+        }
+
+        .btn-gold:hover {
+            background-color: #d97706;
+            color: #ffffff;
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .desktop-preview-card {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .preview-icon {
+            font-size: 3.5rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2.2rem 1.8rem;
+            text-align: left;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-icon-box {
+            width: 50px;
+            height: 50px;
+            background: #eff6ff;
+            color: var(--primary-blue);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.6rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Highlights & Requirements Banner */
+        .system-specs {
+            background: #ffffff;
+            padding: 4.5rem 8%;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .specs-list {
+            list-style: none;
+            margin-top: 1.2rem;
+        }
+
+        .specs-list li {
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .specs-list li i {
+            color: var(--primary-blue);
+        }
+
+        /* Subscription & Pricing */
+        .pricing {
+            padding: 5rem 8%;
+            text-align: center;
+        }
+
+        .pricing-box {
+            background: #ffffff;
+            border: 2px solid var(--gold-accent);
+            border-radius: 12px;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+
+        .pricing-box h3 {
+            font-size: 1.5rem;
+            color: var(--dark-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .price-tag {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--dark-navy);
+            margin: 1.2rem 0;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        .pricing-box ul {
+            list-style: none;
+            margin: 1.5rem 0 2rem;
+            text-align: left;
+        }
+
+        .pricing-box ul li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+        }
+
+        .pricing-box ul li i {
+            color: #16a34a;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: #9ca3af;
+            padding: 3.5rem 8% 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .footer-col h4 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-col ul li a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid #374151;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 800px) {
+            .hero, .specs-grid {
+                flex-direction: column;
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-cta {
+                justify-content: center;
+            }
+            .specs-list {
+                text-align: left;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <span>Desktop Gold — Integrated Mail & Web Experience</span>
+        <div>
+            <a href="#help"><i class="fa-solid fa-circle-question"></i> Help Center</a>
+            <a href="#signin"><i class="fa-solid fa-user"></i> Sign In</a>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">
+            <span>AOL Desktop</span>
+            <span class="gold">Gold</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#features">Features</a></li>
+            <li><a href="#specs">System Specs</a></li>
+            <li><a href="#pricing">Subscription</a></li>
+            <li><a href="#pricing" class="btn-primary">Download App</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <span class="hero-badge">Everything in One Place</span>
+            <h1>Your Mail, Web Browsing & News, All in One Desktop App</h1>
+            <p>Access your inbox, search the web, play games, and read the latest headlines from a unified desktop experience built for ease of use and peace of mind.</p>
+            <div class="hero-cta">
+                <a href="#pricing" class="btn-gold"><i class="fa-solid fa-download"></i> Get Desktop Gold</a>
+                <a href="#features" class="btn-primary">Explore Features</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="desktop-preview-card">
+                <div class="preview-icon"><i class="fa-solid fa-desktop"></i></div>
+                <h3 style="color: #ffffff; margin-bottom: 0.5rem;">Unified Experience</h3>
+                <p style="color: #cbd5e1; font-size: 0.9rem;">Enjoy integrated mail notifications, tabbed browsing, and automatic security updates.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <h2>Designed for Convenience & Simplicity</h2>
+            <p>A familiar, all-inclusive workspace designed to make your daily computer activities faster and more secure.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <h3>Integrated Mail & Contacts</h3>
+                <p>Read, write, and manage multiple email accounts effortlessly with centralized address books and quick search tools.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Enhanced Security & 2-Step Verification</h3>
+                <p>Equipped with modern encryption standards and multi-factor authentication support to keep your account safeguarded.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fa-solid fa-rotate"></i></div>
+                <h3>Automatic Background Updates</h3>
+                <p>Updates download and install automatically in the background, ensuring you always have the latest enhancements without interruptions.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon-box"><i class="fa-solid fa-gamepad"></i></div>
+                <h3>Built-In Entertainment & Games</h3>
+                <p>Direct access to daily puzzles, classic board games, and curated news articles without needing separate software.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Requirements Section -->
+    <section class="system-specs" id="specs">
+        <div class="specs-grid">
+            <div>
+                <h2 style="font-size: 2rem; color: var(--dark-navy); margin-bottom: 1rem;">System Compatibility</h2>
+                <p style="color: var(--text-muted);">Ensure your computer meets the recommended specifications for a smooth and responsive experience.</p>
+                
+                <ul class="specs-list">
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Operating System:</strong> Windows 10, Windows 11 (64-bit) / macOS Compatible</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Processor:</strong> 2.0 GHz Intel/AMD or Apple Silicon equivalent</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Memory (RAM):</strong> 4 GB minimum (8 GB recommended)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Storage:</strong> 1 GB free disk space for application files and cache</li>
+                </ul>
+            </div>
+            <div style="background: var(--light-bg); border-radius: 12px; padding: 2rem; border: 1px solid var(--border-color);">
+                <h3 style="color: var(--dark-navy); margin-bottom: 0.8rem;"><i class="fa-solid fa-life-ring" style="color: var(--primary-blue);"></i> Official Customer Support</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">All active subscriptions include access to the online help portal, interactive troubleshooting guides, and product documentation.</p>
+                <a href="#help" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">Visit the Support Portal &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="section-header">
+            <h2>Subscription Plans</h2>
+            <p>Start your experience with flexible monthly subscription options.</p>
+        </div>
+
+        <div class="pricing-box">
+            <h3>Desktop Gold Monthly Membership</h3>
+            <div class="price-tag">$4.99 <span>/ month</span></div>
+            <p style="color: var(--text-muted); font-size: 0.95rem;">Cancel anytime directly via your online account dashboard.</p>
+
+            <ul>
+                <li><i class="fa-solid fa-check"></i> Unlimited Mail, Browsing & Gaming access</li>
+                <li><i class="fa-solid fa-check"></i> Install on up to 3 household computers</li>
+                <li><i class="fa-solid fa-check"></i> Automatic continuous updates</li>
+                <li><i class="fa-solid fa-check"></i> Standard technical support access</li>
+            </ul>
+
+            <button class="btn-gold" style="width: 100%; font-size: 1rem; border: none; cursor: pointer;">Start Your Membership</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>AOL Desktop Gold</h4>
+                <p style="font-size: 0.9rem;">An integrated personal desktop suite bringing together web browsing, email management, news feeds, and casual games.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Products & Services</h4>
+                <ul>
+                    <li><a href="#">Desktop Gold for Windows</a></li>
+                    <li><a href="#">Desktop Gold for Mac</a></li>
+                    <li><a href="#">Mail Access</a></li>
+                    <li><a href="#">Member Portal</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Help & Legal</h4>
+                <ul>
+                    <li><a href="#">Account Management</a></li>
+                    <li><a href="#">Installation Guide</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 AOL Desktop Gold Concept Layout. For design and educational demonstration purposes.
+        </div>
+    </footer>
+
+</body>
+</html>
